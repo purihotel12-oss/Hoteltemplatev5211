@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import RoomCard from '../components/RoomCard.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import AmenityCard from '../components/AmenityCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import NearbyPlaceCard from '../components/NearbyPlaceCard.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import BookingCTA from '../components/BookingCTA.astro';
+import { hotel } from '../data/hotel';
+import { rooms } from '../data/rooms';
+import { amenities } from '../data/amenities';
+import { experiences } from '../data/experiences';
+import { gallery } from '../data/gallery';
+import { reviews } from '../data/reviews';
+import { nearby } from '../data/nearby';
+import { faqs } from '../data/faqs';
+import { awards } from '../data/awards';
+import { features } from '../data/features';
+import { bookingHref, bookingLabel } from '../lib/booking';
+import { ArrowUpRight } from 'lucide-astro';
+const featured = rooms.filter(r => r.featured).slice(0, 3);
+---
+<BaseLayout title={hotel.name}>
+  <Hero />
+  <BookingWidget />
+
+  <section id="story" class="container-hotel py-28 sm:py-36">
+    <div class="grid gap-14 lg:grid-cols-[.7fr_1.3fr]">
+      <div><p class="eyebrow text-[var(--accent)]">01 — Welcome</p></div>
+      <div><h2 class="font-display text-5xl leading-[.94] sm:text-7xl">A stay shaped by place, not by a template.</h2><p class="mt-8 max-w-2xl text-base leading-8 text-[var(--muted)]">{hotel.longDescription}</p><a href="/about" class="focus-ring mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em]">Our story <ArrowUpRight size={16}/></a></div>
+    </div>
+  </section>
+
+  {features.rooms && featured.length > 0 && <section class="bg-[var(--surface)] py-24 sm:py-32"><div class="container-hotel"><SectionHeading eyebrow="02 — Stay" title="Rooms with a sense of calm" description="Every room is data-driven, individually described and ready to adapt to the property you supply."/><div class="mt-14 grid gap-10 md:grid-cols-2">{featured.map(room => <RoomCard room={room}/>)}</div></div></section>}
+
+  {features.amenities && amenities.length > 0 && <section class="container-hotel py-28"><SectionHeading eyebrow="03 — Essentials" title="Everything considered" description="Only supplied amenities are presented."/><div class="mt-14 grid border-t border-black/10 sm:grid-cols-2 lg:grid-cols-3">{amenities.map(a=><AmenityCard amenity={a}/>) }</div></section>}
+
+  {features.experiences && experiences.length > 0 && <section class="bg-[var(--ink)] py-28 text-white sm:py-36"><div class="container-hotel"><div class="grid gap-14 lg:grid-cols-[.7fr_1.3fr]"><div><p class="eyebrow text-white/50">04 — Experiences</p></div><div><h2 class="font-display text-5xl leading-[.94] sm:text-7xl">Days shaped around the destination.</h2><div class="mt-14 grid gap-10 md:grid-cols-2">{experiences.map((e,i)=><ExperienceCard experience={e} index={i+1}/>) }</div></div></div></div></section>}
+
+  {features.gallery && gallery.length > 0 && <section class="container-hotel py-28 sm:py-36"><SectionHeading eyebrow="05 — Gallery" title="See the feeling before you arrive."/><div class="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"><GalleryGrid items={gallery.slice(0,6)} /></div></section>}
+
+  {features.reviews && reviews.length > 0 && <section class="bg-[var(--surface)] py-28"><div class="container-hotel"><SectionHeading eyebrow="06 — Guest words" title="What a stay can become" align="center"/><div class="mx-auto mt-14 max-w-3xl divide-y divide-black/10 border-y border-black/10">{reviews.map(r=><ReviewCard review={r}/>) }</div></div></section>}
+
+  {features.awards && awards.length > 0 && <section class="container-hotel py-24"><SectionHeading eyebrow="07 — Recognition" title="Awards & affiliations"/><div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{awards.map(a=><article class="border-t border-black/10 pt-5"><p class="text-xs uppercase tracking-[.14em] text-[var(--muted)]">{a.organization||'Recognition'}</p><h3 class="font-display mt-3 text-3xl">{a.name}</h3>{a.year&&<p class="mt-2 text-sm text-[var(--muted)]">{a.year}</p>}</article>)}</div></section>}
+
+  {nearby.length > 0 && <section class="container-hotel py-28"><div class="grid gap-14 lg:grid-cols-[1fr_.8fr]"><div><p class="eyebrow text-[var(--accent)]">08 — Local</p><h2 class="font-display mt-5 text-5xl leading-[.95] sm:text-7xl">Go beyond the front door.</h2></div><div class="space-y-0 border-t border-black/10">{nearby.map((n,i)=><NearbyPlaceCard place={n} index={i+1}/>) }</div></div></section>}
+
+  {features.faq && faqs.length > 0 && <section class="bg-[var(--surface)] py-28"><div class="container-hotel"><SectionHeading eyebrow="09 — Questions" title="Before you arrive"/><div class="mt-12 max-w-4xl"><FAQAccordion items={faqs}/></div></div></section>}
+
+  <section class="relative overflow-hidden bg-[var(--ink)] py-32 text-white"><div class="container-hotel relative text-center"><p class="eyebrow text-white/50">Plan your stay</p><h2 class="font-display mx-auto mt-5 max-w-4xl text-6xl leading-[.88] sm:text-8xl">Make room for a better kind of getaway.</h2><BookingCTA label={bookingLabel()} variant="light" /></div></section>
+</BaseLayout>

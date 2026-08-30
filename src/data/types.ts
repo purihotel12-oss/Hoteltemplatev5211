@@ -1,0 +1,19 @@
+export interface Contact { phone?:string; alternatePhone?:string; whatsapp?:string; email?:string; reservationsEmail?:string; enquiryEmail?:string; website?:string; bookingUrl?:string }
+export interface Location { address?:string; locality?:string; city?:string; district?:string; state?:string; country?:string; postalCode?:string; latitude?:number; longitude?:number; googleMapsUrl?:string; directionsUrl?:string; nearbyAirport?:string; nearbyRailwayStation?:string; nearbyBusStation?:string; arrivalInstructions?:string }
+export interface SEO { siteUrl:string; title:string; description:string; canonical?:string; robots?:string; ogImage?:string; ogTitle?:string; ogDescription?:string }
+export interface Theme { primary:string; secondary:string; accent:string; background:string; surface:string; text:string; muted:string; border:string; displayFont:string; bodyFont:string }
+export interface FeatureFlags { rooms:boolean; amenities:boolean; gallery:boolean; experiences:boolean; reviews:boolean; faq:boolean; offers:boolean; blog:boolean; corporateEvents:boolean; giftVouchers:boolean; careers:boolean; guestInformation:boolean; awards:boolean }
+export interface BookingConfiguration { mode:'externalBooking'|'enquiry'|'directContact'; externalBookingUrl?:string; enquiryEndpoint?:string }
+export interface Hotel { name:string; legalName:string; shortName:string; tagline:string; propertyType:string; shortDescription:string; longDescription:string; logo:string; favicon:string; primaryImage:string; mobileHeroImage?:string; address:Location; contact:Contact; booking:BookingConfiguration; trustNotice?:{enabled:boolean;message:string} ; seo:SEO }
+export interface Room { id:string; slug:string; name:string; shortName?:string; description:string; longDescription:string; images:string[]; imageAlt:string[]; guests?:number; children?:string; bedType?:string; roomSize?:string; view?:string; floor?:string; bathrooms?:number; amenities:string[]; features:string[]; price?:number; priceLabel?:string; mealPlan?:string; featured?:boolean; bookingUrl?:string; enquiryEnabled?:boolean; policies?:string[]; faqs?:{question:string;answer:string}[] }
+export interface Amenity { icon:string; name:string; description?:string; category:string; image?:string; availabilityNote?:string }
+export interface GalleryItem { image:string; alt:string; caption?:string; category:string; featured?:boolean; width?:number; height?:number }
+export interface Experience { title:string; description:string; image?:string; duration?:string; distance?:string; location?:string; difficulty?:string; ageSuitability?:string; price?:number; bookingUrl?:string; enquiryEnabled?:boolean }
+export interface NearbyPlace { name:string; category:string; description?:string; distance?:string; travelTime?:string; image?:string; directionsUrl?:string; mapUrl?:string }
+export interface FAQ { question:string; answer:string; category:string }
+export interface Review { guestName:string; reviewText:string; rating?:number; date?:string; source:string; externalUrl?:string }
+export interface Offer { title:string; description:string; image?:string; validFrom?:string; validUntil?:string; inclusions:string[]; exclusions?:string[]; price?:number; cta?:string; terms?:string[] }
+export interface BlogPost { title:string; slug:string; excerpt:string; content:string; featuredImage?:string; author?:string; publicationDate?:string; category?:string; tags?:string[]; seoTitle?:string; seoDescription?:string; canonicalUrl?:string; ogImage?:string }
+export interface Policy { title:string; intro?:string; sections:{heading:string;body:string}[]; requiresReview?:boolean }
+export interface SocialLink { platform:string; url:string; label?:string }
+export interface Award { name:string; organization?:string; year?:string; logo?:string; url?:string }

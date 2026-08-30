@@ -1,7 +1,0 @@
----
-import { ArrowUpRight } from 'lucide-astro';
-import { bookingHref, bookingLabel } from '../lib/booking';
-const { context = 'general', label = bookingLabel(), variant = 'dark' } = Astro.props as { context?: string; label?: string; variant?: 'dark' | 'light' };
-const classes = variant === 'light' ? 'bg-white text-[var(--ink)]' : 'bg-[var(--ink)] text-white';
----
-<a href={bookingHref(context)} class={`focus-ring inline-flex items-center gap-3 px-6 py-4 text-xs font-bold uppercase tracking-[.16em] ${classes}`}>{label}<ArrowUpRight size={16}/></a>

@@ -1,0 +1,7 @@
+---
+import { features } from '../../data/features';
+import BaseLayout from '../../layouts/BaseLayout.astro'; import { blog } from '../../data/blog';
+if (!features.blog) return Astro.redirect('/404');
+export function getStaticPaths(){return blog.map(post=>({params:{slug:post.slug},props:{post}}))}; const {post}=Astro.props;
+---
+<BaseLayout title={post.title} description={post.seoDescription}><article class="container-hotel max-w-4xl pt-40 pb-28"><p class="eyebrow text-[var(--accent)]">{post.category||'Journal'}</p><h1 class="font-display mt-5 text-6xl leading-[.9]">{post.title}</h1><p class="mt-6 text-[var(--muted)]">{post.excerpt}</p><div class="prose prose-stone mt-12 max-w-none"><p>{post.content}</p></div></article></BaseLayout>

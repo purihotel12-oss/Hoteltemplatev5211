@@ -1,0 +1,5 @@
+---
+import type { SocialLink } from '../data/types';
+const { links = [] } = Astro.props as { links: SocialLink[] };
+---
+{links.length > 0 && <div class="flex flex-wrap gap-4">{links.map(link => <a href={link.url} rel="noopener noreferrer" target="_blank" class="text-xs uppercase tracking-[.14em] hover:opacity-70">{link.label || link.platform}</a>)}</div>}

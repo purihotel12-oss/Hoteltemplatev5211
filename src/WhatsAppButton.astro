@@ -1,6 +1,0 @@
----
-import { MessageCircle } from 'lucide-astro';
-import { whatsappHref } from '../lib/whatsapp';
-const href = whatsappHref();
----
-{href && <a href={href} aria-label="Chat on WhatsApp" class="focus-ring fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 bg-[var(--ink)] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-white shadow-lg"> <MessageCircle size={16}/> WhatsApp </a>}

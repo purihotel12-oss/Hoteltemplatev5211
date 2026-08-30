@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import TrustNotice from '../components/TrustNotice.astro';
+import { hotel } from '../data/hotel';
+import { theme } from '../data/theme';
+import StructuredData from '../components/StructuredData.astro';
+import { hotelJsonLd } from '../lib/structuredData';
+
+const { title, description, robots, jsonLd = [] } = Astro.props;
+const baseJsonLd = hotelJsonLd();
+const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href={hotel.favicon} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <SEO title={title} description={description} robots={robots} />
+    <StructuredData items={[baseJsonLd, ...extraJsonLd.filter(Boolean)]} />
+  </head>
+  <body>
+    <Header />
+    <main><slot /></main>
+    <TrustNotice />
+    <Footer />
+    <WhatsAppButton />
+  </body>
+</html>
+<style is:global define:vars={{
+  themePrimary: theme.primary,
+  themeSecondary: theme.secondary,
+  themeAccent: theme.accent,
+  themeBackground: theme.background,
+  themeSurface: theme.surface,
+  themeText: theme.text,
+  themeMuted: theme.muted,
+  themeBorder: theme.border,
+  themeDisplayFont: theme.displayFont,
+  themeBodyFont: theme.bodyFont
+}}>
+  :root {
+    --ink: var(--themeText);
+    --muted: var(--themeMuted);
+    --paper: var(--themeBackground);
+    --surface: var(--themeSurface);
+    --accent: var(--themeAccent);
+    --line: var(--themeBorder);
+    --font-display: var(--themeDisplayFont);
+    --font-body: var(--themeBodyFont);
+  }
+</style>

@@ -1,0 +1,7 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
+import ReviewCard from '../components/ReviewCard.astro'; import { reviews } from '../data/reviews';
+if (!features.reviews) return Astro.redirect('/404');
+---
+<BaseLayout title="Reviews"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Reviews" title="Guest words"/><div class="mt-14 max-w-4xl divide-y divide-black/10 border-y border-black/10">{reviews.map(r=><ReviewCard review={r}/>) }</div></div></section></BaseLayout>

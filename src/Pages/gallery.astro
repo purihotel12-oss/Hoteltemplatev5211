@@ -1,0 +1,6 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro'; import { gallery } from '../data/gallery';
+if (!features.gallery) return Astro.redirect('/404');
+---
+<BaseLayout title="Gallery"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Gallery" title="A visual sense of place"/><div class="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{gallery.map(g=><a href={g.image} class="group overflow-hidden"><img src={g.image} alt={g.alt} loading="lazy" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.03]"/><div class="py-3 text-xs text-[var(--muted)]">{g.category}{g.caption?` · ${g.caption}`:''}</div></a>)}</div></div></section></BaseLayout>

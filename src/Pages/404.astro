@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { features } from '../data/features';
+import { bookingHref, bookingLabel } from '../lib/booking';
+---
+<BaseLayout title="Page not found">
+  <section class="flex min-h-[75vh] items-center py-32">
+    <div class="container-hotel text-center">
+      <p class="eyebrow text-[var(--accent)]">404</p>
+      <h1 class="font-display mt-5 text-7xl">This page wandered off.</h1>
+      <p class="mx-auto mt-5 max-w-lg text-[var(--muted)]">Let's get you back to somewhere useful.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="focus-ring bg-[var(--ink)] px-6 py-4 text-xs font-bold uppercase tracking-[.16em] text-white">Home</a>
+        {features.rooms && <a href="/rooms" class="focus-ring border border-black/15 px-6 py-4 text-xs font-bold uppercase tracking-[.16em]">Rooms</a>}
+        <a href={bookingHref('404 page')} class="focus-ring border border-black/15 px-6 py-4 text-xs font-bold uppercase tracking-[.16em]">{bookingLabel()}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

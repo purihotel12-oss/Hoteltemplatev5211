@@ -1,0 +1,6 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
+if (!features.corporateEvents) return Astro.redirect('/404');
+---
+<BaseLayout title="corporate events"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Optional module" title="corporate events" description="DEMO CONTENT — REPLACE BEFORE PRODUCTION. Enable this feature only when verified hotel data is supplied."/></div></section></BaseLayout>

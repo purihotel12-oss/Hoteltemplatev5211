@@ -1,1 +1,20 @@
-
+---
+import { Menu, X, ArrowUpRight } from 'lucide-astro'; import { hotel } from '../data/hotel'; import { features } from '../data/features'; import { bookingHref, bookingLabel } from '../lib/booking';
+const links=[['Rooms','/rooms',features.rooms],['Experiences','/experiences',features.experiences],['About','/about',true],['Gallery','/gallery',features.gallery],['Contact','/contact',true]].filter(x=>x[2]);
+---
+<header class="absolute inset-x-0 top-0 z-50 text-white"><div class="container-hotel"><div class="flex h-24 items-center justify-between border-b border-white/20"><a href="/" class="focus-ring flex items-center gap-3" aria-label={`${hotel.name} home`}><img src={hotel.logo} alt="" class="h-9 w-auto invert"/><span class="hidden text-xs font-semibold tracking-[.24em] sm:inline">{hotel.shortName}</span></a><nav class="hidden items-center gap-8 lg:flex" aria-label="Primary"><a class="text-sm hover:opacity-70" href="/">Home</a>{links.map(([label,href])=><a class="text-sm hover:opacity-70" href={href as string}>{label}</a>)}</nav><div class="flex items-center gap-3"><a href={bookingHref()} class="focus-ring hidden items-center gap-2 border border-white/50 px-5 py-3 text-xs font-semibold uppercase tracking-[.16em] hover:bg-white hover:text-[var(--ink)] sm:flex">{bookingLabel()} <ArrowUpRight size={15}/></a><button id="menu-open" class="focus-ring inline-flex p-2 lg:hidden" aria-label="Open menu" aria-controls="mobile-menu"><Menu/></button></div></div></div></header>
+<div id="mobile-menu" class="fixed inset-0 z-[60] hidden bg-[var(--ink)] text-white" aria-hidden="true"><div class="container-hotel flex h-24 items-center justify-between"><span class="text-sm font-semibold tracking-[.24em]">{hotel.shortName}</span><button id="menu-close" class="focus-ring p-2" aria-label="Close menu"><X/></button></div><nav class="container-hotel flex flex-col gap-6 pt-12 text-4xl font-display">{links.map(([label,href])=><a href={href as string}>{label}</a>)}<a href={bookingHref()} class="mt-4 text-base font-sans font-semibold uppercase tracking-[.16em]">{bookingLabel()} ↗</a></nav></div>
+<script is:inline>
+  const o = document.getElementById('menu-open');
+  const c = document.getElementById('menu-close');
+  const m = document.getElementById('mobile-menu');
+  const set = (v) => {
+    if (!m) return;
+    m.classList.toggle('hidden', !v);
+    m.setAttribute('aria-hidden', String(!v));
+    document.body.style.overflow = v ? 'hidden' : '';
+  };
+  o?.addEventListener('click', () => set(true));
+  c?.addEventListener('click', () => set(false));
+  m?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+</script>

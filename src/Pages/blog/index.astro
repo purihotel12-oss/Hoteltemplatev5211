@@ -1,6 +1,0 @@
----
-import { features } from '../../data/features';
-import BaseLayout from '../../layouts/BaseLayout.astro'; import SectionHeading from '../../components/SectionHeading.astro'; import { blog } from '../../data/blog';
-if (!features.blog) return Astro.redirect('/404');
----
-<BaseLayout title="Journal"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Journal" title="Stories from the stay"/>{blog.length===0?<p class="mt-14 text-sm text-[var(--muted)]">No posts are configured. Add verified blog data to enable this module.</p>:<div class="mt-14 grid gap-8">{blog.map(p=><a href={`/blog/${p.slug}`} class="border-t border-black/10 py-5 font-display text-3xl">{p.title}</a>)}</div>}</section></BaseLayout>

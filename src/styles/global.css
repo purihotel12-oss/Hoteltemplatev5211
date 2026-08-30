@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{font-synthesis:none}
+html{scroll-behavior:smooth;background:var(--paper)} body{margin:0;color:var(--ink);font-family:var(--font-body);background:var(--paper)}
+::selection{background:color-mix(in srgb,var(--accent) 30%,white);color:var(--ink)} .font-display{font-family:var(--font-display)} .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.68rem;font-weight:600}.hairline{border-color:var(--line)}
+.container-hotel{width:min(90rem,calc(100% - 2rem));margin-inline:auto}.serif-balance{text-wrap:balance}
+.reveal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}.delay-1{animation-delay:.12s}.delay-2{animation-delay:.24s}.delay-3{animation-delay:.36s}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{animation:none}}
+.focus-ring:focus-visible{outline:2px solid var(--accent);outline-offset:4px}

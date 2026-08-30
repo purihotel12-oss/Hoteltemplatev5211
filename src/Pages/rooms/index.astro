@@ -1,6 +1,0 @@
----
-import { features } from '../../data/features';
-import BaseLayout from '../../layouts/BaseLayout.astro'; import SectionHeading from '../../components/SectionHeading.astro'; import RoomCard from '../../components/RoomCard.astro'; import { rooms } from '../../data/rooms';
-if (!features.rooms) return Astro.redirect('/404');
----
-<BaseLayout title="Rooms"><section class="pt-40 pb-24"><div class="container-hotel"><SectionHeading eyebrow="Stay" title="Rooms made for slowing down" description="DEMO CONTENT — REPLACE BEFORE PRODUCTION."/><div class="mt-16 grid gap-12 md:grid-cols-2">{rooms.map(room=><RoomCard room={room}/>)}</div></div></section></BaseLayout>

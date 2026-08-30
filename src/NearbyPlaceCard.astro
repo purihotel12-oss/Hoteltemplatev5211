@@ -1,0 +1,5 @@
+---
+import type { NearbyPlace } from '../data/types';
+const { place, index = 1 } = Astro.props as { place: NearbyPlace; index?: number };
+---
+<article class="flex gap-6 border-b border-black/10 py-6"><span class="text-xs text-[var(--accent)]">{String(index).padStart(2,'0')}</span><div><h3 class="font-display text-2xl">{place.name}</h3>{place.description && <p class="mt-2 text-sm text-[var(--muted)]">{place.description}</p>}{(place.distance || place.travelTime) && <p class="mt-3 text-xs uppercase tracking-[.12em]">{[place.distance,place.travelTime].filter(Boolean).join(' · ')}</p>}{place.directionsUrl && <a href={place.directionsUrl} class="mt-3 inline-block text-xs font-semibold uppercase tracking-[.14em]">Directions ↗</a>}</div></article>

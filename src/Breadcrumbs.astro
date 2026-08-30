@@ -1,0 +1,4 @@
+---
+const items = Astro.props.items || [];
+---
+<nav aria-label="Breadcrumb" class="text-xs text-[var(--muted)]"><ol class="flex flex-wrap items-center gap-2">{items.map((item: {name:string;url?:string}, i:number) => <li class="flex items-center gap-2">{i > 0 && <span aria-hidden="true">/</span>}{item.url ? <a class="focus-ring hover:text-[var(--ink)]" href={item.url}>{item.name}</a> : <span aria-current="page">{item.name}</span>}</li>)}</ol></nav>

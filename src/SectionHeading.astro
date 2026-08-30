@@ -1,4 +1,0 @@
----
-const {eyebrow,title,description,align='left'}=Astro.props;
----
-<div class={`max-w-3xl ${align==='center'?'mx-auto text-center':''}`}><p class="eyebrow text-[var(--accent)]">{eyebrow}</p><h2 class="font-display serif-balance mt-4 text-5xl leading-[.95] tracking-[-.025em] sm:text-6xl">{title}</h2>{description&&<p class="mt-6 text-base leading-7 text-[var(--muted)] sm:text-lg">{description}</p>}</div>

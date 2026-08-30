@@ -1,5 +1,0 @@
----
-import { ArrowUpRight } from 'lucide-astro'; import type { Room } from '../data/types';
-const {room}=Astro.props as {room:Room};
----
-<article class="group"><a href={`/rooms/${room.slug}`} class="focus-ring block"><div class="relative aspect-[4/3] overflow-hidden bg-[var(--surface)]"><img src={room.images[0]} alt={room.imageAlt[0]} loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"/><div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-5 text-white"><span class="text-xs tracking-wide">{room.guests ? `${room.guests} guests` : ''}{room.roomSize ? ` · ${room.roomSize}` : ''}</span></div></div><div class="flex items-start justify-between gap-5 border-b border-black/10 py-5"><div><h3 class="font-display text-3xl leading-none">{room.name}</h3><p class="mt-2 text-sm text-[var(--muted)]">{room.description}</p></div><ArrowUpRight class="shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"/></div></a></article>

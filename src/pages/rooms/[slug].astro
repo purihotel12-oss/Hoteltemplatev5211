@@ -1,0 +1,15 @@
+---
+import { features } from '../../data/features';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import RoomGallery from '../../components/RoomGallery.astro';
+import { rooms } from '../../data/rooms';
+import { bookingHref, bookingLabel } from '../../lib/booking';
+import { breadcrumbJsonLd } from '../../lib/structuredData';
+import BookingCTA from '../../components/BookingCTA.astro';
+if (!features.rooms) return Astro.redirect('/404');
+export function getStaticPaths(){return rooms.map(room=>({params:{slug:room.slug},props:{room}}))}
+const {room}=Astro.props;
+const crumbs=[{name:'Home',url:'/'},{name:'Rooms',url:'/rooms'},{name:room.name}];
+---
+<BaseLayout title={room.name} description={room.description} jsonLd={breadcrumbJsonLd(crumbs)}><section class="pt-36 pb-24"><div class="container-hotel"><Breadcrumbs items={crumbs}/><div class="mt[...]

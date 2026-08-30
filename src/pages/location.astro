@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
+import NearbyPlaceCard from '../components/NearbyPlaceCard.astro'; import { hotel } from '../data/hotel'; import { nearby } from '../data/nearby';
+---
+<BaseLayout title="Location"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Location" title="Well placed for the stay you want" description={hotel.address.addres[...]

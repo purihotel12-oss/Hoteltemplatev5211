@@ -1,0 +1,6 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
+if (!features.guestInformation) return Astro.redirect('/404');
+---
+<BaseLayout title="Guest Information"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Guest information" title="Everything useful in one place"/><div class="mt-14[...]

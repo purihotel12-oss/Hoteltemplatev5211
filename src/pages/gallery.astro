@@ -1,0 +1,6 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro'; import { gallery } from '../data/gallery';
+if (!features.gallery) return Astro.redirect('/404');
+---
+<BaseLayout title="Gallery"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Gallery" title="A visual sense of place"/><div class="mt-14 grid gap-3 sm:grid-cols-2 [...]

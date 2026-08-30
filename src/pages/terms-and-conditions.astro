@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro'; import { policies } from '../data/policies'; const policy=policies['terms'];
+---
+<BaseLayout title={policy.title}><section class="pt-40 pb-28"><div class="container-hotel max-w-4xl"><SectionHeading eyebrow="Legal" title={policy.title} description={policy.intro}/>{policy.require[...]

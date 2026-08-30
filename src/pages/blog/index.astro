@@ -1,0 +1,6 @@
+---
+import { features } from '../../data/features';
+import BaseLayout from '../../layouts/BaseLayout.astro'; import SectionHeading from '../../components/SectionHeading.astro'; import { blog } from '../../data/blog';
+if (!features.blog) return Astro.redirect('/404');
+---
+<BaseLayout title="Journal"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Journal" title="Stories from the stay"/>{blog.length===0?<p class="mt-14 text-sm text-[...]

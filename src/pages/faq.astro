@@ -1,0 +1,10 @@
+---
+import { features } from '../data/features';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { faqs } from '../data/faqs';
+import { faqJsonLd } from '../lib/structuredData';
+if (!features.faq) return Astro.redirect('/404');
+---
+{faqs.length>0&&<BaseLayout title="FAQ" jsonLd={faqJsonLd(faqs)}><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="FAQ" title="Useful answers, before you arrive"/>[...]

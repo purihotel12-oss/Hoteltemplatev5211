@@ -1,5 +1,0 @@
----
-import type { Amenity } from '../data/types';
-const { amenity } = Astro.props as { amenity: Amenity };
----
-<article class="border-b border-r border-black/10 p-7"><span class="eyebrow text-[var(--accent)]">{amenity.category}</span><h3 class="font-display mt-5 text-3xl">{amenity.name}</h3>{amenity.description && <p class="mt-3 text-sm leading-6 text-[var(--muted)]">{amenity.description}</p>}{amenity.availabilityNote && <p class="mt-3 text-xs text-[var(--muted)]">{amenity.availabilityNote}</p>}</article>

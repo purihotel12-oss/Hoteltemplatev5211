@@ -1,7 +1,0 @@
----
-import { features } from '../data/features';
-import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
-import ExperienceCard from '../components/ExperienceCard.astro'; import { experiences } from '../data/experiences';
-if (!features.experiences) return Astro.redirect('/404');
----
-<BaseLayout title="Experiences"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Experiences" title="Let the destination shape the day"/><div class="mt-14 grid gap-12 md:grid-cols-2">{experiences.map((e,i)=><ExperienceCard experience={e} index={i+1}/>) }</div></div></section></BaseLayout>

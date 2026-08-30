@@ -1,6 +1,0 @@
----
-import { features } from '../data/features';
-import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
-if (!features.guestInformation) return Astro.redirect('/404');
----
-<BaseLayout title="Guest Information"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Guest information" title="Everything useful in one place"/><div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{['Check-in & check-out','ID requirements','Children & extra beds','Pets','Meals','Parking','Wi-Fi','Payment methods','Property rules'].map((x,i)=><div class="border border-black/10 p-7"><span class="text-xs text-[var(--accent)]">0{i+1}</span><h2 class="font-display mt-12 text-3xl">{x}</h2><p class="mt-3 text-sm leading-7 text-[var(--muted)]">DEMO CONTENT — REPLACE BEFORE PRODUCTION.</p></div>)}</div></div></section></BaseLayout>

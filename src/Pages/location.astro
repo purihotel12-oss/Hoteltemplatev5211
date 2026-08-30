@@ -1,5 +1,0 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro';
-import NearbyPlaceCard from '../components/NearbyPlaceCard.astro'; import { hotel } from '../data/hotel'; import { nearby } from '../data/nearby';
----
-<BaseLayout title="Location"><section class="pt-40 pb-28"><div class="container-hotel"><SectionHeading eyebrow="Location" title="Well placed for the stay you want" description={hotel.address.address}/><div class="mt-14 grid gap-14 lg:grid-cols-[1fr_.8fr]"><div class="min-h-[420px] bg-[var(--surface)] p-8"><p class="eyebrow text-[var(--accent)]">Arrival</p><p class="mt-5 max-w-xl text-sm leading-7 text-[var(--muted)]">{hotel.address.arrivalInstructions||'DEMO CONTENT — REPLACE BEFORE PRODUCTION.'}</p></div><div>{nearby.map((n,i)=><NearbyPlaceCard place={n} index={i+1}/>) }</div></div></div></section></BaseLayout>

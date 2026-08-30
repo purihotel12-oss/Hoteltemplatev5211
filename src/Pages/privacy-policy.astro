@@ -1,4 +1,0 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro'; import SectionHeading from '../components/SectionHeading.astro'; import { policies } from '../data/policies'; const policy=policies['privacy'];
----
-<BaseLayout title={policy.title}><section class="pt-40 pb-28"><div class="container-hotel max-w-4xl"><SectionHeading eyebrow="Legal" title={policy.title} description={policy.intro}/>{policy.requiresReview&&<div class="mt-10 border-l-2 border-[var(--accent)] bg-[var(--surface)] p-5 text-sm leading-6">Template legal content — requires hotel review before production. Do not treat this page as legal advice or as a verified compliance statement.</div>}<div class="mt-14 space-y-12">{policy.sections.map(s=><section><h2 class="font-display text-4xl">{s.heading}</h2><p class="mt-4 text-sm leading-8 text-[var(--muted)]">{s.body}</p></section>)}</div></div></section></BaseLayout>

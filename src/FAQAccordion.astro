@@ -1,4 +1,0 @@
----
-import { Plus } from 'lucide-astro'; import type { FAQ } from '../data/types'; const items=Astro.props.items as FAQ[];
----
-<div class="divide-y divide-black/10 border-y border-black/10">{items.map((item,i)=><details class="group py-5"><summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-left text-lg font-medium focus:outline-none"><span>{item.question}</span><Plus class="transition group-open:rotate-45" size={20}/></summary><p class="max-w-3xl pt-4 pr-10 text-sm leading-7 text-[var(--muted)]">{item.answer}</p></details>)}</div>
